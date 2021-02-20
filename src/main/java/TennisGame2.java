@@ -31,41 +31,24 @@ public class TennisGame2 implements TennisGame
             return SCORES.get(player1Point)+ "-All";
         }
         return "Deuce";
-
     }
+
+    private String pointsMatch() {
+        player1Score = getListScores(player1Point);
+        player2Score = getListScores(player2Point);
+        return player1Score + "-" + player2Score;
+    }
+
 
     public String getScore() {
         String score = "";
-        if (player1Point == player2Point && player1Point < 3) {
+        if (player1Point == player2Point) {
             score = pointWhenDraw(player1Point);
         }
-
-        if (player1Point > 0 && player2Point ==0)
-        {
-            if (player1Point ==1)
-                player1Score = "Fifteen";
-            if (player1Point ==2)
-                player1Score = "Thirty";
-            if (player1Point ==3)
-                player1Score = "Forty";
-            
-            player2Score = "Love";
-            score = player1Score + "-" + player2Score;
+        else{
+            score=pointsMatch();
         }
 
-        if (player2Point > 0 && player1Point ==0)
-        {
-            if (player2Point ==1)
-                player2Score = "Fifteen";
-            if (player2Point ==2)
-                player2Score = "Thirty";
-            if (player2Point ==3)
-                player2Score = "Forty";
-            
-            player1Score = "Love";
-            score = player1Score + "-" + player2Score;
-        }
-        
         if (player1Point > player2Point && player1Point < 4)
         {
             if (player1Point ==2)
