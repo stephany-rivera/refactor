@@ -49,31 +49,6 @@ public class TennisGame2 implements TennisGame
             score=pointsMatch();
         }
 
-        if (player1Point > player2Point && player1Point < 4)
-        {
-            if (player1Point ==2)
-                player1Score ="Thirty";
-            if (player1Point ==3)
-                player1Score ="Forty";
-            if (player2Point ==1)
-                player2Score ="Fifteen";
-            if (player2Point ==2)
-                player2Score ="Thirty";
-            score = player1Score + "-" + player2Score;
-        }
-        if (player2Point > player1Point && player2Point < 4)
-        {
-            if (player2Point ==2)
-                player2Score ="Thirty";
-            if (player2Point ==3)
-                player2Score ="Forty";
-            if (player1Point ==1)
-                player1Score ="Fifteen";
-            if (player1Point ==2)
-                player1Score ="Thirty";
-            score = player1Score + "-" + player2Score;
-        }
-        
         if (player1Point > player2Point && player2Point >= 3)
         {
             score = "Advantage player1";
