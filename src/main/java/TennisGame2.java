@@ -26,11 +26,8 @@ public class TennisGame2 implements TennisGame
         return SCORES.get(points);
     }
 
-    private String pointWhenDraw(Integer player1Point){
-        if (player1Point<3){
-            return SCORES.get(player1Point)+ "-All";
-        }
-        return "Deuce";
+    private String pointWhenDraw(Integer player1Point) {
+        return player1Point < 3 ? SCORES.get(player1Point) + "-All" : "Deuce";
     }
 
     private String pointsMatch() {
@@ -39,18 +36,14 @@ public class TennisGame2 implements TennisGame
         return player1Score + "-" + player2Score;
     }
 
-    private String advantage(){
-        if(player1Point>player2Point){
-            return "Advantage " + this.player1Name;
-        }
-        return "Advantage " + this.player2Name;
+    private String advantage() {
+        return player1Point > player2Point ? "Advantage " + this.player1Name :
+                "Advantage " + this.player2Name;
     }
 
-    private String playerWin(Integer player1Point, Integer player2Point){
-        if (player1Point > player2Point) {
-            return "Win for " + player1Name;
-        }
-        return "Win for " + player2Name;
+    private String playerWin(Integer player1Point, Integer player2Point) {
+        return player1Point > player2Point ? "Win for " + player1Name :
+                "Win for " + player2Name;
     }
 
 
