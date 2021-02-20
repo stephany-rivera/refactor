@@ -4,8 +4,8 @@ public class TennisGame2 implements TennisGame
 {
     public int player1Point = 0;
     public int player2Point = 0;
-    public String player1Score = "";
-    public String player2Score = "";
+    public  String player1Score = "";
+    public  String player2Score = "";
     private String player1Name;
     private String player2Name;
     private static final HashMap<Integer,String> SCORES= new HashMap<Integer,String>();
@@ -55,45 +55,21 @@ public class TennisGame2 implements TennisGame
 
 
     public String getScore() {
-        String score = "";
         if (player1Point == player2Point) {
             return pointWhenDraw(player1Point);
         }
 
-        if (player1Point >= 3 && player2Point >= 3) {
-            if (Math.abs(player1Point - player2Point) == 1)
-                return advantage();
+        if (player1Point >= 3 && player2Point >= 3 && Math.abs(player1Point - player2Point) == 1) {
+            return advantage();
         }
 
-        if (player1Point >= 4 || player2Point >= 4) {
-            if (Math.abs(player1Point - player2Point) == 1)
-                return playerWin(player1Point, player2Point);
+        if (player1Point >= 4 || player2Point >= 4 && Math.abs(player1Point - player2Point) >= 2) {
+            return playerWin(player1Point, player2Point);
         }
-
         return pointsMatch();
+
     }
 
-
-
-    
-    public void SetP1Score(int number){
-        
-        for (int i = 0; i < number; i++)
-        {
-            P1Score();
-        }
-            
-    }
-    
-    public void SetP2Score(int number){
-        
-        for (int i = 0; i < number; i++)
-        {
-            P2Score();
-        }
-            
-    }
-    
     public void P1Score(){
         player1Point++;
     }
@@ -103,9 +79,11 @@ public class TennisGame2 implements TennisGame
     }
 
     public void wonPoint(String player) {
-        if (player == "player1")
+        if (player.equals(player1Name))
             P1Score();
         else
             P2Score();
     }
+
+
 }
