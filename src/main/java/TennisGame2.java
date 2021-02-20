@@ -39,6 +39,13 @@ public class TennisGame2 implements TennisGame
         return player1Score + "-" + player2Score;
     }
 
+    public String advantage(){
+        if(player1Point>player2Point){
+            return "Advantage " + this.player1Name;
+        }
+        return "Advantage " + this.player2Name;
+    }
+
 
     public String getScore() {
         String score = "";
@@ -49,16 +56,11 @@ public class TennisGame2 implements TennisGame
             score=pointsMatch();
         }
 
-        if (player1Point > player2Point && player2Point >= 3)
-        {
-            score = "Advantage player1";
+        if (player1Point >= 3 && player2Point >= 3) {
+            if (Math.abs(player1Point - player2Point) == 1)
+                score = advantage();
         }
-        
-        if (player2Point > player1Point && player1Point >= 3)
-        {
-            score = "Advantage player2";
-        }
-        
+
         if (player1Point >=4 && player2Point >=0 && (player1Point - player2Point)>=2)
         {
             score = "Win for player1";
