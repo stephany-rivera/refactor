@@ -10,6 +10,11 @@ public class TennisGame2 implements TennisGame
     private String player2Name;
     private static final HashMap<Integer,String> SCORES= new HashMap<Integer,String>();
 
+    public TennisGame2(String player1Name, String player2Name) {
+        this.player1Name = player1Name;
+        this.player2Name = player2Name;
+    }
+
     static{
         SCORES.put(0,"Love");
         SCORES.put(1,"Fifteen");
@@ -21,29 +26,20 @@ public class TennisGame2 implements TennisGame
         return SCORES.get(points);
     }
 
-    public TennisGame2(String player1Name, String player2Name) {
-        this.player1Name = player1Name;
-        this.player2Name = player2Name;
+    private String pointWhenDraw(Integer player1Point){
+        if (player1Point<3){
+            return SCORES.get(player1Point)+ "-All";
+        }
+        return "Deuce";
+
     }
 
-   public String getScore(){
+    public String getScore() {
         String score = "";
-        if (player1Point == player2Point && player1Point < 4)
-        {
-            score= getListScores(player1Point)+"-All";
-            /*
-            if (player1Point ==0)
-                score = "Love";
-            if (player1Point ==1)
-                score = "Fifteen";
-            if (player1Point ==2)
-                score = "Thirty";
-            score += "-All";*/
-
+        if (player1Point == player2Point && player1Point < 3) {
+            score = pointWhenDraw(player1Point);
         }
-        if (player1Point == player2Point && player1Point >=3)
-            score = "Deuce";
-        
+
         if (player1Point > 0 && player2Point ==0)
         {
             if (player1Point ==1)
