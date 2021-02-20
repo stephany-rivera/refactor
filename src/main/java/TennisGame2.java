@@ -39,38 +39,42 @@ public class TennisGame2 implements TennisGame
         return player1Score + "-" + player2Score;
     }
 
-    public String advantage(){
+    private String advantage(){
         if(player1Point>player2Point){
             return "Advantage " + this.player1Name;
         }
         return "Advantage " + this.player2Name;
     }
 
+    private String playerWin(Integer player1Point, Integer player2Point){
+        if (player1Point > player2Point) {
+            return "Win for " + player1Name;
+        }
+        return "Win for " + player2Name;
+    }
+
 
     public String getScore() {
         String score = "";
         if (player1Point == player2Point) {
-            score = pointWhenDraw(player1Point);
-        }
-        else{
-            score=pointsMatch();
+            return pointWhenDraw(player1Point);
         }
 
         if (player1Point >= 3 && player2Point >= 3) {
             if (Math.abs(player1Point - player2Point) == 1)
-                score = advantage();
+                return advantage();
         }
 
-        if (player1Point >=4 && player2Point >=0 && (player1Point - player2Point)>=2)
-        {
-            score = "Win for player1";
+        if (player1Point >= 4 || player2Point >= 4) {
+            if (Math.abs(player1Point - player2Point) == 1)
+                return playerWin(player1Point, player2Point);
         }
-        if (player2Point >=4 && player1Point >=0 && (player2Point - player1Point)>=2)
-        {
-            score = "Win for player2";
-        }
-        return score;
+
+        return pointsMatch();
     }
+
+
+
     
     public void SetP1Score(int number){
         
